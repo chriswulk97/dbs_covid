@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 #%% Load covid19 and owid data into pandas DatafFrame.
 covid_data_path = "data/covid19.json"
 covid_data = pd.read_json(covid_data_path)
@@ -19,3 +18,9 @@ data = pd.merge(covid_data,
                 how="left",
                 left_on=["countriesAndTerritories", "dateRep"],
                 right_on=["location", "date"])
+
+#%%
+
+save_path = "data/merged_data.csv"
+
+data.to_csv(save_path)
